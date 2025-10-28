@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Generated Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+<body>
+  <h1>Result for Task: {{ task.capitalize() }}</h1>
+
+  <div>
+    <h2>Topic: {% if task != 'summary' %}{{ topic }}{% else %}N/A{% endif %}</h2>
+    <div><strong>Generated Content:</strong></div>
+    <pre style="white-space: pre-wrap; font-family: system-ui, sans-serif; line-height:1.6;">
+{{ content }}
+    </pre>
+  </div>
+
+  <div>
+    <a href="/" class="back-button">Back to Input</a>
+  </div>
+</body>
+</html>

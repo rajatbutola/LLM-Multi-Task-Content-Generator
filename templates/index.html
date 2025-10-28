@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Input Topics</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <h1>Input Topics for LLM Tasks</h1>
+
+  <form action="/generate" method="post">
+
+    <!-- Task Selection -->
+    <div class="task-field">
+      <label for="task">Select Task:</label><br />
+      <select id="task" name="task" onchange="updateForm()">
+        <option value="blog">Blog Generation</option>
+        <option value="summary">Summarization</option>
+        <option value="email">Email Writing</option>
+      </select>
+    </div>
+
+    <!-- Blog / Email Common -->
+    <div id="topic-field" class="task-field">
+      <label for="topic">Topic (or Email Subject):</label><br />
+      <input type="text" id="topic" name="topic" placeholder="e.g., Application for leave" />
+    </div>
+
+    <div id="tone-field" class="task-field">
+      <label for="tone">Tone:</label><br />
+      <input type="text" id="tone" name="tone" placeholder="e.g., professional, friendly, formal" />
+    </div>
+
+    <!-- Blog-only -->
+    <div id="keywords-field" class="task-field">
+      <label for="keywords">Keywords (comma-separated):</label><br />
+      <input type="text" id="keywords" name="keywords" placeholder="e.g., AI, edge, latency" />
+    </div>
+
+    <!-- Summary-only -->
+    <div id="text-field" class="task-field">
+      <label for="text">Enter text to summarize:</label><br />
+      <textarea id="text" name="text" rows="6" style="width:100%;"></textarea>
+    </div>
+
+    <!-- Email-only -->
+    <div id="email-fields" class="task-field">
+      <h3>Email Details</h3>
+
+      <label for="recipient_name">Recipient Name:</label><br />
+      <input type="text" id="recipient_name" name="recipient_name" placeholder="e.g., Ms. Lee" />
+
+      <label for="reason">Reason for Leave:</label><br />
+      <input type="text" id="reason" name="reason" placeholder="e.g., attending a family event" />
+
+      <div class="grid-two">
+        <div>
+          <label for="start_date">Start Date:</label><br />
+          <input type="date" id="start_date" name="start_date" />
+        </div>
+        <div>
+          <label for="duration_days">Duration (days):</label><br />
+          <input type="number" id="duration_days" name="duration_days" min="1" />
+        </div>
+      </div>
+
+      <label for="return_date">Expected Return Date (optional if duration provided):</label><br />
+      <input type="date" id="return_date" name="return_date" />
+
+      <div class="grid-two">
+        <div>
+          <label for="handover_name">Handover Person (optional):</label><br />
+          <input type="text" id="handover_name" name="handover_name" placeholder="e.g., Alex Chen" />
+        </div>
+        <div>
+          <label for="handover_contact">Handover Contact (optional):</label><br />
+          <input type="text" id="handover_contact" name="handover_contact" placeholder="e.g., alex@example.com" />
+        </div>
+      </div>
+    </div>
+
+    <input type="submit" value="Generate"/>
+  </form>
+
+  <script>
+    function updateForm() {
+      const task = document.getElementById("task").value;
+
+      // Visibility
+      document.getElementById("topic-field").style.display = (task === "blog" || task === "email") ? "block" : "none";
+      document.getElementById("tone-field").style.display = (task === "blog" || task === "email") ? "block" : "none";
+      document.getElementById("keywords-field").style.display = (task === "blog") ? "block" : "none";
+      document.getElementById("text-field").style.display = (task === "summary") ? "block" : "none";
+      document.getElementById("email-fields").style.display = (task === "email") ? "block" : "none";
+
+      // Enable/disable inputs
+      document.getElementById("topic").disabled = (task === "summary");
+      document.getElementById("keywords").disabled = (task !== "blog");
+      document.getElementById("tone").disabled = (task === "summary");
+      document.getElementById("text").disabled = (task !== "summary");
+
+      // Email-only enable/disable
+      const emailInputs = document.querySelectorAll("#email-fields input");
+      emailInputs.forEach(inp => inp.disabled = (task !== "email"));
+
+      // Clear irrelevant fields
+      if (task !== "summary") document.getElementById("text").value = "";
+      if (task !== "blog") document.getElementById("keywords").value = "";
+    }
+
+    window.onload = updateForm;
+  </script>
+</body>
+</html>
