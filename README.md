@@ -17,13 +17,6 @@ By combining lightweight LLM inference with retrieval from vetted medical texts,
 -  **Text Summarization**: Condense long articles, reports, or documents into clear and concise summaries.  
 -  **Email Generation**: Compose structured leave request emails with customizable fields like recipient name, reason, dates, and more.
 
-Answer:
-English: "PrEP is highly effective ..."
-Mandarin: "暴露前預防性投藥（PrEP）在正確規律服用時..."
-Sources:
-1: cdc-prep-leaflet.pdf (chunk 0)
-2: cdc-prep-guide.pdf (chunk 1)
-
 ##  Requirements
 
 - Python 3.8 or higher
@@ -39,7 +32,7 @@ To set up the project locally, follow these steps:
 
 ### 1. Clone the repo
 ```bash
-[git clone https://github.com/your-username/health-education-chatbot.git](https://github.com/rajatbutola/LLM-Multi-Task-Content-Generator)
+git clone https://github.com/rajatbutola/LLM-Multi-Task-Content-Generator
 cd LLM-Multi-Task-Content-Generator
 ```
 ### 2. Create and activate a virtual environment:
@@ -123,6 +116,19 @@ index.html: The HTML page for the main interface of the app.
 
 result.html: The HTML page used to display the generated results.
 
+## GUI screenshots
+
+<img width="1440" height="900" alt="1" src="https://github.com/user-attachments/assets/e0fffba6-e725-41bd-9922-8cd7feee0129" />
+<img width="1440" height="900" alt="2" src="https://github.com/user-attachments/assets/c76132af-09d9-45a2-8efc-2c149ae3d33b" />
+<img width="1440" height="900" alt="3" src="https://github.com/user-attachments/assets/33b0e44a-5ac8-4d00-888a-7975c68b5454" />
+<img width="1440" height="900" alt="4" src="https://github.com/user-attachments/assets/1ecfb1e1-c6e7-4ef6-bf52-e592fd14d98e" />
+<img width="1440" height="900" alt="5" src="https://github.com/user-attachments/assets/bc484322-9cc7-422a-9e6d-cd2ece682c5d" />
+<img width="1440" height="900" alt="6" src="https://github.com/user-attachments/assets/eb45c562-f2e3-4421-afbd-8bd3aeb43c19" />
+<img width="1440" height="900" alt="7" src="https://github.com/user-attachments/assets/40a1b2d3-a8c4-4fa1-968d-21b6554be4d4" />
+<img width="1440" height="900" alt="8" src="https://github.com/user-attachments/assets/3191ea4b-2d30-4375-95e0-39fed52c5ad3" />
+
+
+
 ## Contribution
 
 Contributions are welcome! If you'd like to improve or add features to the project, feel free to open an issue or submit a pull request. Here are some ways you can contribute:
@@ -132,39 +138,3 @@ Add new features (e.g., new tasks or additional models)
 Fix bugs or improve performance
 
 Update documentation or enhance the user interface
-
-
-
-
-
-
-
-
-
-
-Start the Flask server:
-```bash
-python app_chat.py
-```
-Open http://127.0.0.1:5000 in your browser.
-You can now ask questions like:
-
--  **“What is PrEP and how effective is it?”
-
-<img width="943" height="783" alt="Health education chatbot 0" src="https://github.com/user-attachments/assets/345a03fe-7bac-4ae7-87a7-14bb4f7f764e" />
-<img width="1058" height="840" alt="Health education chatbot 1" src="https://github.com/user-attachments/assets/cb6ff618-6ec3-4af6-9f42-ab2f66000338" />
-<img width="1051" height="855" alt="Health education chatbot 2" src="https://github.com/user-attachments/assets/d63d6390-8e15-4051-a6fb-43b051247deb" />
-<img width="969" height="829" alt="Health education chatbot 3" src="https://github.com/user-attachments/assets/c3853625-b6bd-45c3-8378-c0b84e77cdfd" />
-<img width="960" height="821" alt="Health education chatbot 4" src="https://github.com/user-attachments/assets/6d4b063f-d7e9-4041-b91b-7abff9e347c6" />
-
-
-Notes on Use
-
--  This chatbot is for educational purposes only.
--  It is not a diagnostic tool and should not replace medical advice.
--  Always consult healthcare professionals for personal medical concerns.
-
-Please cite the original CDC / NHS / MOHW-HPA sources when redistributing patient education content.
-
-
-
